@@ -37,7 +37,6 @@ export class MasonryLayoutEngine<T = unknown> {
 
   private placements: ItemPlacement[] = [];
   private columns: ItemPlacement[][] = [[]];
-  private columnHeights = new Float64Array(1);
   private checkpoints: LayoutCheckpoint[] = [];
   private measuredHeights = new Map<ItemKey, number>();
   private keyToIndex = new Map<ItemKey, number>();
@@ -286,7 +285,6 @@ export class MasonryLayoutEngine<T = unknown> {
       heights[column] = bottom;
     }
 
-    this.columnHeights = heights;
     const maxColumnBottom = this.count > 0 ? findTallestHeight(heights) : this.paddingStart;
     this.totalHeight = maxColumnBottom + this.paddingEnd;
     this.dirtyFromIndex = this.count;
